@@ -13,7 +13,7 @@ const path = require("path");
 AWS.config.update({
   accessKeyId: "AccessKey",
   secretAccessKey: "SecretKey",
-  region: "ap-south-1", // Update with your AWS region
+  region: "ap-south-1", 
 });
 let fileNameOriginal = "";
 const storage = multer.diskStorage({
@@ -36,7 +36,7 @@ app.post("/api/translate", upload.single("file"), (req, res) => {
   const s3 = new AWS.S3();
 
   const bucketName = "sourcetranslate";
-  const txtFilePath = "./original/x.txt"; // Update with the correct file path
+  const txtFilePath = "./original/x.txt"; 
   const baseFile = path.basename(txtFilePath);
 
   fs.readFile(txtFilePath, (err, data) => {
@@ -68,7 +68,7 @@ app.post("/api/translate", upload.single("file"), (req, res) => {
   const translate = new AWS.Translate();
   const txtFileKey = baseFile.toString();
 
-  const targetLanguageCode = req.body.targetLanguage.toString(); // Change this to the target language code
+  const targetLanguageCode = req.body.targetLanguage.toString(); 
 
   const translatedTxtFilePath = "./translated/" + baseFile;
 
